@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090d">
+  <title>Rodolfo Isturiz — IT Operations & Systems Administration</title>
+  <meta name="description" content="Rodolfo Isturiz — IT operations professional with 12+ years across infrastructure, systems administration and endpoint management.">
+  <meta name="author" content="Rodolfo Isturiz">
+  <meta property="og:title" content="Rodolfo Isturiz — IT Operations & Systems Administration">
+  <meta property="og:description" content="IT operations professional with 12+ years across infrastructure, systems administration and endpoint management.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rhod92.github.io/resume/">
+  <meta property="og:image" content="https://github.com/rhod92.png">
+  <link rel="canonical" href="https://rhod92.github.io/resume/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2307090d'/><text x='16' y='23' text-anchor='middle' font-family='monospace' font-size='20' font-weight='700' fill='%239ab7ff'>$</text></svg>">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+  <main class="shell">
+    <section class="profile" aria-labelledby="name">
+      <div class="profile__grid">
+        <div class="identity">
+          <p class="status">Madrid, Spain · Open to Remote</p>
+          <h1 id="name">Rodolfo Isturiz</h1>
+          <p class="role">IT Operations | Systems Administration | Infrastructure</p>
+          <p class="summary">
+            IT operations professional with 12+ years of experience across infrastructure, systems
+            administration and endpoint management. Currently responsible for internal IT operations
+            at a distributed company.
+          </p>
+
+          <div class="actions">
+            <button class="button button--primary" type="button" id="openTerminal">Access CV</button>
+            <a class="button" href="https://www.linkedin.com/in/rodolfoisturiz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <aside class="terminal" aria-label="Profile terminal">
+          <div class="terminal__bar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="terminal__body">
+            <p><span class="prompt">$</span> whoami</p>
+            <p>rodolfo_isturiz</p>
+            <br>
+            <p><span class="prompt">$</span> role --target</p>
+            <p>systems_administration</p>
+            <p>infrastructure_operations</p>
+            <p>cloud_operations</p>
+            <br>
+            <p><span class="prompt">$</span> availability</p>
+            <p>madrid / remote</p>
+            <br>
+            <p><span class="prompt">$</span> cv --help</p>
+            <p>request cv</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cv-gate" id="cvGate" aria-labelledby="cv-gate-title">
+      <div class="cv-gate__content">
+        <p class="label">CV access</p>
+        <h2 id="cv-gate-title">Small operations check</h2>
+        <p>Type the command shown in the terminal to request access to the CV.</p>
+
+        <form class="command" id="commandForm">
+          <label for="commandInput">Command</label>
+          <div class="command__row">
+            <span>$</span>
+            <input id="commandInput" name="command" type="text" placeholder="request cv" autocomplete="off">
+            <button type="submit">Run</button>
+          </div>
+          <p class="message" id="commandMessage" aria-live="polite"></p>
+        </form>
+
+        <noscript>
+          <p><a href="https://drive.google.com/drive/folders/1q5V4wo0MmIYobfvmNaT9a1Xcu9ley5C2?usp=drive_link" rel="noopener noreferrer">Request CV access</a></p>
+        </noscript>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Last update: <time datetime="2026-09">September 2026</time></span>
+      <span>© <span id="year"></span> Rodolfo Isturiz</span>
+    </footer>
+  </main>
+
+  <script>
+    const form = document.getElementById("commandForm");
+    const input = document.getElementById("commandInput");
+    const message = document.getElementById("commandMessage");
+    const openTerminal = document.getElementById("openTerminal");
+    const gate = document.getElementById("cvGate");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    openTerminal.addEventListener("click", () => {
+      gate.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+      setTimeout(() => input.focus(), reducedMotion ? 0 : 420);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const command = input.value.trim().toLowerCase().replace(/\s+/g, " ");
+
+      if (command === "request cv") {
+        message.textContent = "Command accepted. Opening access request...";
+        window.open(
+          "https://drive.google.com/drive/folders/1q5V4wo0MmIYobfvmNaT9a1Xcu9ley5C2?usp=drive_link",
+          "_blank",
+          "noopener,noreferrer"
+        );
+      } else {
+        message.textContent = "Command not found. Try: request cv";
+      }
+    });
+  </script>
+</body>
+</html>
